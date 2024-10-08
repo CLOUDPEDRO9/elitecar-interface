@@ -37,8 +37,10 @@ h1 {
 }
 
 .esquerda, 
+.meio, 
 .direita {
-    width: 50%;
+    width: 33%;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,57 +58,6 @@ h1 {
     width: 30%;
 
     border-radius: 5px;
-}
-
-.painel{
-    display: flex;
-    flex-direction: row;
-    margin-top: 215px;
-}
-.direita {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-}
-
-.carros-preto {
-    width: 400px;
-    height: 400px;
-    margin-left: -250px;
-}
-
-.carros-cinza {
-    width: 400px;
-    height: 400px;
-    margin-top: 50px;
-    margin-left: -250px;
-}
-
-.esquerda {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-    margin-top: -250px;
-}
-
-.img-esquerda{
-    margin-top: 100px;
-}
-
-.texto-inicial{
-    margin-top: 40px;
-}
-
-.texto-central{
-    margin-top: 20px;
-}
-
-h3 {
-    font-size: 1.4rem;
 }
 
 div a {
