@@ -26,33 +26,25 @@ async function enviaFormulario() {
     }
 }
 
-async function listarCarros() {
+async function recuperarListaCarros() {
     try {
-        const respostaServidor = await fetch("http://localhost:3333/lista/carros", { // Faz a requisição GET
-            method: "GET",
-            headers: {
-                'Content-Type' : 'application/json'
-            }
-        });
-    
-        if (!respostaServidor.ok) {
-            throw new Error("Erro ao buscar dados da lista de carros");
+        const respostaServidor = await fetch("http://localhost:3333/lista/carros");
+
+        if(!respostaServidor.ok) {
+            throw new Error('Erro ao comunicar com o servidor.');
         }
-    
-        const carros = await respostaServidor.json(); // Converte a resposta para JSON
-        preencherTabela(carros); // Chama a função para preencher a tabela com os dados
+        const listarDeCarros = await respostaServidor.json();
+        criarTabelasCarros(listarDeCarros)
     } catch (error) {
+        console.log('erro ao se comunicar com o servidor');
         console.log(error);
-        alert(`Erro ao se comunicar com o servidor. ${error}`);
     }
 }
 
 // Função para preencher a tabela com os dados recebidos
-function preencherTabela(carros) {
+function criarTabelasCarros(carros) {
     const tabela = document.getElementById('carTableBody');
-    tabela.innerHTML = ''; // Limpa qualquer conteúdo existente na tabela
 
-    // Itera sobre cada carro no array de dados
     carros.forEach(carro => {
         // Cria uma nova linha da tabela
         const row = document.createElement('tr');
@@ -79,6 +71,7 @@ function preencherTabela(carros) {
         row.appendChild(cellCor);
 
         const tdAcoes = document.createElement('td');
+
         const iconAtualizar = document.createElement('img'); // Cria o elemento <img>
         iconAtualizar.src = 'assets/icons/pencil-square.svg'; // Define o caminho da imagem
         iconAtualizar.alt = 'Ícone de edição'; // Texto alternativo para acessibilidade
